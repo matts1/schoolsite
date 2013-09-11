@@ -152,6 +152,3 @@ LOGGING = {
         },
     }
 }
-
-HOME_URL = '/home'
-LOGIN_URL = '/login'

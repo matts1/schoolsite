@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}ADD TITLE{% endblock %}</title>
+        <title>{% block title %}{{ title|title }}{% endblock %}</title>
         <link rel="stylesheet" href="/static/css/normalise.css">
         <link rel="stylesheet" href="/static/css/style.css">
         <!--[if lt IE 9]>
@@ -12,7 +12,12 @@
     <body>
         <div id="body">
             <nav><ul>
-                <li><a href="{% url 'login' %}">Login</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
             </ul></nav>
             <div id="content">
                 {% block content %}ADD CONTENT{% endblock %}
