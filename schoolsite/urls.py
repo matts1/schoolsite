@@ -8,7 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^auth/', include('auth.urls')),
-
+    url(r'^classes/', include('groups.urls')),
 
     # page shortcuts
     url(r'^$', RedirectView.as_view(url=reverse_lazy('login'))),

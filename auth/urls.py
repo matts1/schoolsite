@@ -1,6 +1,6 @@
 from django.conf.urls import patterns
 from django.core.urlresolvers import reverse_lazy
-from auth.views import RegisterView, custom_login
+from auth.views import *
 
 urlpatterns = patterns('',
     (

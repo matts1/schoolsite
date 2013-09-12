@@ -100,7 +100,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cuser.middleware.CuserMiddleware'
 )
 
 ROOT_URLCONF = 'schoolsite.urls'
@@ -121,7 +122,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'cuser', # external library
     'auth',
+    'groups',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -152,3 +155,5 @@ LOGGING = {
         },
     }
 }
+
+AUTH_USER_MODEL = 'auth.User'

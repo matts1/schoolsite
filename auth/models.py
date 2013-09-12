@@ -1,5 +1,5 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name='profile')
+class User(AbstractUser):
+    pass
