@@ -1,11 +1,13 @@
 from django.conf.urls import patterns
 from django.core.urlresolvers import reverse_lazy
+
 from auth.views import *
+from auth.forms import LoginForm
 
 urlpatterns = patterns('',
     (
         r'^login$', custom_login,
-        dict(template_name='auth/login.html'),
+        dict(template_name='auth/login.html', authentication_form=LoginForm),
         'login'
     ),
     (

@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class Group(models.Model):
+    name = models.CharField(max_length=80)
+    # manytomany so you can either copy modules or use the exact same one
+    # modules = models.ManyToManyField

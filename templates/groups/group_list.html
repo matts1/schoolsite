@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load gravatar %}
+
+{% block content %}
+    {% gravatar %}
+    <h2>Classes</h2>
+    <ul>
+        {% for group in object_list %}
+            <li>{{ group.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

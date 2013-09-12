@@ -1,4 +1,5 @@
 from copy import deepcopy
+from django.contrib.auth.forms import AuthenticationForm
 from django.forms import *
 
 from auth.models import User
@@ -40,7 +41,12 @@ class RegisterForm(ModelForm):
             data['email'], # use email as username since it's required
             data['email'],
             data['password'],
-            first_name=data['first_name'],
-            last_name=data['last_name'],
+            first_name=data['first_name'].title(),
+            last_name=data['last_name'].title(),
         )
         user.save()
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.fields['username'].label = 'Email Address'

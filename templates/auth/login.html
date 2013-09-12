@@ -2,6 +2,6 @@
 {% xextends 'common/form.html' with title='Login' %}
 
 {% block formfooter %}
-    <input type="hidden" name="next" value="">
+    <input type="hidden" name="next" value="{% url 'home' %}">
     <a href="">Forgotten Your Password?</a>
 {% endblock %}

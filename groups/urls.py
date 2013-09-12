@@ -1,8 +1,12 @@
 from django.conf.urls import patterns
+
 from groups.views import *
 
 urlpatterns = patterns('',
     (
-        'create', CreateClassView.as_view(), {}, 'create_class'
-    )
+        r'^create$', CreateGroupView.as_view(), {}, 'create_class',
+    ),
+    (
+        r'^home$', GroupListView.as_view(), {}, 'home',
+    ),
 )
