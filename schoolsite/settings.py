@@ -1,4 +1,5 @@
 # Django settings for schoolsite project.
+from django.core.urlresolvers import reverse_lazy
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -157,3 +158,6 @@ LOGGING = {
 }
 
 AUTH_USER_MODEL = 'auth.User'
+
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('home')

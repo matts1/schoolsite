@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse_lazy
+from django.conf import settings
 from django.shortcuts import redirect
 
 def anonymous_required(fn):
@@ -6,5 +6,5 @@ def anonymous_required(fn):
         if not request.user.is_authenticated():
             return fn(request, *args, **kwargs)
         else:
-            return redirect(reverse_lazy('home'), permanent=False)
+            return redirect(settings.LOGIN_REDIRECT_URL, permanent=False)
     return new_fn

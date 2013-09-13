@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from groups.forms import *
 from django.views.generic import FormView, ListView
 
@@ -12,3 +14,7 @@ class CreateGroupView(FormView):
 
 class GroupListView(ListView):
     model = Group
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(GroupListView, self).dispatch(*args, **kwargs)

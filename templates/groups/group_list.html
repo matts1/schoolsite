@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+{% block title %}Your Classes{% endblock %}
 
 {% block content %}
     <h2>Classes</h2>
     <ul>
         {% for group in object_list %}
             <li>{{ group.name }}</li>
+        {% empty %}
+            You are not currently in any classes.
         {% endfor %}
     </ul>
 {% endblock %}
