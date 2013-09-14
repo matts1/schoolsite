@@ -37,14 +37,13 @@ class RegisterForm(ModelForm):
 
     def save(self):
         data = self.cleaned_data
-        user = User.objects.create_user(
+        User.objects.create_user(
             data['email'], # use email as username since it's required
             data['email'],
             data['password'],
             first_name=data['first_name'].title(),
             last_name=data['last_name'].title(),
-        )
-        user.save()
+        ).save()
 
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):

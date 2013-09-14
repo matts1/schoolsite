@@ -33,7 +33,7 @@ def do_xextends(parser, token):
         i = 0
         while i < len(argslist):
             if argslist[i].count('"') % 2 or argslist[i].count("'") % 2:
-                argslist[i] += " " + argslist[i + 1]
+                argslist[i] += ' ' + argslist[i + 1]
                 argslist.pop(i + 1)
             else:
                 i += 1
@@ -50,7 +50,7 @@ def do_xextends(parser, token):
                 raise template.TemplateSyntaxError, 'Argument syntax wrong: should be key=value'
             # before we are done, remove the argument part from the token contents,
         # or django's extends tag won't be able to handle it.
-        token.contents = " ".join(bits)
+        token.contents = ' '.join(bits)
 
     # let the orginal do_extends parse the tag, and wrap the ExtendsNode
     return XExtendsNode(do_extends(parser, token), kwargs)

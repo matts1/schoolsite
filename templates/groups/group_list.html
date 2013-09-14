@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load model_form %}
+
 {% block title %}Your Classes{% endblock %}
 
 {% block content %}
@@ -10,4 +12,5 @@
             You are not currently in any classes.
         {% endfor %}
     </ul>
+    {% model_form groups.forms.CreateGroupForm groups/create.html create_class %}
 {% endblock %}
