@@ -7,7 +7,7 @@
     <h2>Classes</h2>
     <ul>
         {% for group in object_list %}
-            <li>{{ group.name }}</li>
+            <li><a href="{% url 'view_group' group=group.name %}">{{ group.name }}</a></li>
         {% empty %}
             You are not currently in any classes.
         {% endfor %}

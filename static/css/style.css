@@ -64,7 +64,7 @@ label {
     font-weight: bold;
 }
 
-input {
+form input {
     background: #fff;
     border: 1px solid #c6c9cc;
     border-radius: 4px;
