@@ -1,16 +1,15 @@
-{% extends "base.html" %}
-{% load model_form %}
+{% load xextends %}
+{% xextends 'common/form.html' with button='Create Class' %}
 
-{% block title %}Your Classes{% endblock %}
+{% block title %}Classes{% endblock %}
 
-{% block content %}
+{% block prevcontent %}
     <h2>Classes</h2>
     <ul>
-        {% for group in object_list %}
+        {% for group in groups %}
             <li><a href="{% url 'view_group' group=group.name %}">{{ group.name }}</a></li>
         {% empty %}
             You are not currently in any classes.
         {% endfor %}
     </ul>
-    {% model_form groups.forms.CreateGroupForm groups/create.html create_class %}
 {% endblock %}
