@@ -12,9 +12,6 @@ class CreateGroupForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CreateGroupForm, self).__init__(*args, **kwargs)
-        self.fields['name'].validators.append(RegexValidator(
-
-        ))
         self.fields['key'].validators.append(unused_key)
         self.fields['key'].required = False
 
@@ -24,16 +21,11 @@ class CreateGroupForm(ModelForm):
             self._errors['key'] = self.error_class(['When your group is invisible it needs to have a key so that people can join it'])
         return super(CreateGroupForm, self).clean()
 
-    def is_valid(self):
-        valid = super(CreateGroupForm, self).is_valid()
-        if valid:
-            self.save()
-        return valid
-
-    def valid_form(self):
+    def save(self):
+        if self.model is None:
+            self.model = Group(name='', visible=True, key='')
         data = self.cleaned_data
-        Group(
-            name=data['name'],
-            visible=data['visible'],
-            key=data.get('key'),
-        ).save()
+        self.model.name=data['name']
+        self.model.visible=data['visible']
+        self.model.key=data.get('key')
+        return self.model

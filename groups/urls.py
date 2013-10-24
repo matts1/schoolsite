@@ -8,7 +8,7 @@ urlpatterns = patterns('',
         r'^home$', login_required(GroupsView.as_view()), {}, 'home',
     ),
     (
-        r'^viewclass/(?P<group>[A-Za-z0-9 ]+)$',
+        r'^viewclass/(?P<group>.+)$',
         login_required(ViewGroupView.as_view()), {}, 'view_group',
     ),
 )
